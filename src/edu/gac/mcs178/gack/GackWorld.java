@@ -7,6 +7,7 @@ import edu.gac.mcs178.gack.domain.Scroll;
 import edu.gac.mcs178.gack.domain.Thing;
 import edu.gac.mcs178.gack.domain.Witch;
 import edu.gac.mcs178.gack.domain.Wizard;
+import edu.gac.mcs178.gack.domain.Food;
 
 public class GackWorld extends World {
 	
@@ -57,14 +58,17 @@ public class GackWorld extends World {
 		//Add witch Jacob
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		
+	
 		lounge.gain(new Thing("Karl's glasses"));
-		dormitory.gain(new Thing("Louis Don't Barf Magical Enchantment"));
+		dormitory.gain(new Scroll("Louis Don't Barf Magical Enchantment"));
 		//add Louis Don't Barf Scroll
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
 		for (String title : someTitles) {
 			library.gain(new Scroll(title));
 		}
+		dormitory.gain(new Food("Chocolate"));
+		//add Chocolate to Dormitory
 		computerLab.gain(new Scroll("Unix Programmers Manual"));
 		computerLab.gain(new Scroll("NeXT User's Reference"));
 		
