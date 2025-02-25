@@ -62,6 +62,7 @@ public class GackWorld extends World {
 		lounge.gain(new Thing("Karl's glasses"));
 		dormitory.gain(new Scroll("Louis Don't Barf Magical Enchantment"));
 		//add Louis Don't Barf Scroll
+		dormitory.gain(new Scroll("Late lab report"));
 		library.gain(new Scroll("Scroll of Enlightenment"));
 		String[] someTitles = {"War and Peace", "Iliad", "Collected Works of Rilke"};
 		for (String title : someTitles) {

@@ -115,6 +115,19 @@ public class Person {
 		}
 	}
 	
+	public void give (Thing thing, Person recipient) {
+		if (!equals(thing.getOwner())) {
+			Utility.displayMessage(this + " does not have " + thing);
+		}
+		else {
+			thing.becomeUnowned();
+			this.possessions.remove(thing);
+			recipient.possessions.add(thing);
+			thing.setOwner(recipient);
+			this.say("Here you can have this " + thing + ", " + recipient);
+		}
+	}
+	
 	public void lose(Thing thing) {
 		if (!equals(thing.getOwner())) {
 			Utility.displayMessage(this + " doesn't have " + thing);
