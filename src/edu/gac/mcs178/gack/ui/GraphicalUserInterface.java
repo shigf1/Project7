@@ -35,11 +35,13 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 	private JComboBox dropJComboBox;
 	private JComboBox readJComboBox;
 	private JComboBox giveJComboBox;
+	private JComboBox eatJComboBox;
 	private GoActionListener goActionListener;
 	private TakeActionListener takeActionListener;
 	private DropActionListener dropActionListener;
 	private ReadActionListener readActionListener;
 	private GiveActionListener giveActionListener;
+	private EatActionListener eatActionListener;
 	
 	public GraphicalUserInterface(Person player) {
 		super();
@@ -58,7 +60,7 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		add(textScrollPane, BorderLayout.CENTER);
 		
 		// controlPanel contains all of the controls for the game
-		JPanel controlPanel = new JPanel(new GridLayout(3, 3));
+		JPanel controlPanel = new JPanel(new GridLayout(4, 4));
 		add(controlPanel, BorderLayout.NORTH);
 		
 		// Look around button
@@ -133,6 +135,14 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 		dropActionListener = new DropActionListener(this, player, dropJComboBox);
 		dropJComboBox.addActionListener(dropActionListener);
 		controlPanel.add(dropJComboBox);
+		
+		// Eat combo box
+		
+		eatJComboBox = new JComboBox();
+		eatActionListener = new EatActionListener(this, player, eatJComboBox);
+		eatJComboBox.addActionListener(eatActionListener);
+		controlPanel.add(eatJComboBox);
+
 	}
 	
 	public void playTurn() {
@@ -142,6 +152,8 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 	
 	private void updateJComboBoxes() {
 		enableJComboListeners(false);
+		eatActionListener.updateJComboBox();
+		//update Listener for eat
 		goActionListener.updateJComboBox();
 		takeActionListener.updateJComboBox();
 		dropActionListener.updateJComboBox();
@@ -151,6 +163,8 @@ public class GraphicalUserInterface extends JFrame implements MessageDisplay {
 	}
 	
 	private void enableJComboListeners(boolean b) {
+		eatActionListener.setEnabled(b);
+		//enable Listener for eat
 		goActionListener.setEnabled(b);
 		takeActionListener.setEnabled(b);
 		dropActionListener.setEnabled(b);

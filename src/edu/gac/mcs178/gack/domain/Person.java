@@ -70,6 +70,15 @@ public class Person {
 		say("Yaaaah! I am upset");
 	}
 	
+	public void eat(Food food) {
+		if ((food.isOwned()) && (food.getOwner().equals(this))) {
+			food.beEaten();
+		} else {
+			Utility.displayMessage(this + " does not have " + food);
+		}
+		
+	}
+	
 	public void moveTo(Place newPlace) {
 		Utility.displayMessage(this + " moves from " + place + " to " + newPlace);
 		place.lose(this);
@@ -103,6 +112,19 @@ public class Person {
 			thing.setOwner(this);
 			possessions.add(thing);
 			say("I take " + thing);
+		}
+	}
+	
+	public void give(Thing thing, Person recipient) {
+		if (!equals(thing.getOwner())) {
+			Utility.displayMessage(this + " does not have " + thing);
+		}
+		else {
+			thing.becomeUnowned();
+			this.possessions.remove(thing);
+			recipient.possessions.add(thing);
+			thing.setOwner(recipient);
+			this.say("Here you can have this " + thing + ", " + recipient);
 		}
 	}
 	
