@@ -8,6 +8,7 @@ import edu.gac.mcs178.gack.domain.Thing;
 import edu.gac.mcs178.gack.domain.Witch;
 import edu.gac.mcs178.gack.domain.Wizard;
 import edu.gac.mcs178.gack.domain.Food;
+import edu.gac.mcs178.gack.domain.Gaurdian;
 
 public class GackWorld extends World {
 	
@@ -25,7 +26,9 @@ public class GackWorld extends World {
 		Place dormitory = new Place("Dormitory");
 		Place pond = new Place("Pond");
 		Place lund = new Place("Lund");
-		//add Lund to places
+		Place destination = new Place("Destination");
+		
+		//add Lund and Destination to places
 		
 		foodService.addNewNeighbor("down", po);
 		po.addNewNeighbor("south", alumniHall);
@@ -48,13 +51,15 @@ public class GackWorld extends World {
 		goodShipOlin.addNewNeighbor("up", lounge);
 		lounge.addNewNeighbor("west", computerLab);
 		lounge.addNewNeighbor("south", offices);
+		lounge.addNewNeighbor("down", goodShipOlin);
 		computerLab.addNewNeighbor("east", lounge);
 		offices.addNewNeighbor("north", lounge);
 		
 		new AutoPerson("Max", offices, 2);
 		new AutoPerson("Karl", computerLab, 4);
-		new Witch("Jacob", lund, 2, pond);
+		//new Witch("Jacob", lund, 2, pond);
 		new Witch("Barbara", offices, 3, pond);
+		new Gaurdian("Gaurdian", goodShipOlin, 1, destination);
 		//Add witch Jacob
 		new Wizard("Elvee", offices, 1, chamberOfWizards);
 		

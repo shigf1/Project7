@@ -115,7 +115,7 @@ public class Person {
 		}
 	}
 	
-	public void give (Thing thing, Person recipient) {
+	public void give(Thing thing, Person recipient) {
 		if (!equals(thing.getOwner())) {
 			Utility.displayMessage(this + " does not have " + thing);
 		}
